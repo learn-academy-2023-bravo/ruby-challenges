@@ -47,3 +47,35 @@ end
 p palindrome 'Madam'
 
     
+#As the first user, I can see a prompt in the terminal to enter my name.
+      puts "First User ,Enter your name:"
+       user_name1 = gets.chomp
+        
+#As the second user, I can see a prompt in the terminal to enter my name.
+    puts "Second user, enter your name:"
+       user_name2 = gets.chomp
+#As the first user, I can see a prompt in the terminal asking me to type either "rock", "paper", or "scissors".
+     puts "#{user_name1} choose rock,paper, or scissors"
+        user_turn1 = gets.chomp.downcase
+#As the second user, I can see a prompt in the terminal asking me to type either "rock", "paper", or "scissors".
+     puts "#{user_name2}, choose rock,paper,or scissors"
+            user_turn2 =gets.chomp.downcase
+        
+#As a user, I can see a message in the terminal depicting which user won the round.
+
+      def game_won (user_turn1,user_turn2)
+        if user_turn1 == user_turn2
+            
+            "Its a tie!"
+            elsif user_turn1 == "rock" && user_turn2 == "scissors " 
+                user_turn1 == "scissors" && user_turn2 == "paper"
+                user_turn1 == "paper" && user_turn2 == "rock"
+              p   "player 1 wins!" 
+            else user_turn2 == "rock" && user_turn1 == "scissors " 
+                user_turn2 == "scissors" && user_turn1 == "paper"
+                user_turn2 == "paper" && user_turn1 == "rock"
+               p "player 2 wins!"    
+        end
+    end
+p game_won user_turn1, user_turn2
+#As a user, I can see a message in the terminal noting if there was a tie.
