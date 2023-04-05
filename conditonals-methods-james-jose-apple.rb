@@ -83,4 +83,4 @@ def password_new(password, user_id)
     end
 end
 
-p password_new(password, user_id)
+p password_new(password, user_id) 
