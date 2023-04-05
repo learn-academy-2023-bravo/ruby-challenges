@@ -108,50 +108,46 @@
 
 # As a developer, you have been tasked with creating the user registration for a secure web site. To test your code, enter the user ID and password in the terminal to find out if they are acceptable. The user ID and password must adhere to the to following criteria:
 
-
-
-# User ID and password cannot be the same.
-
-
-
 def password_checker (user_id, user_password)
+    # User ID and password cannot be the same.
     if user_id == user_password
-        return 'ID and password cannot be the same!'
+        return '❌ ID and password cannot be the same!'
     end
-    if user_id.length < 6 && user_password.length < 6
-        return 'ID and password must be at least 6 characters!'
+    # User ID and password must be at least six characters long.
+    if user_id.length < 6 || user_password.length < 6
+        return '❌ ID and password must be at least 6 characters!'
     end
-    if !user_password.include?('!') && !user_password.include?('#') && !user_password.include?('$')
-        return 'Password must contain at least one of : #,$,!'
-    end
-    if user_id.include?('!') || user_id.include?('#') || user_id.include?('$') || user_id.include?(' ')
-        return 'ID cannot contain !#$ or spaces'
-    end
+    # Password cannot be the word "password".
     if user_password == "password"
-        return 'Password cannot be password'
+        return '❌ Password cannot be password'
     end
-    # # if !user_id.include?(0..9)
-    # #     'Must include one number!'
-    # end
-    'Valid password and ID!'
+    # Password must contain at least one of: !#$
+    if !user_password.include?('!') && !user_password.include?('#') && !user_password.include?('$')
+        return '❌ Password must contain at least one of : #,$,!'
+    end
+    # User ID cannot contain the following characters: !#$ or spaces
+    if user_id.include?('!') || user_id.include?('#') || user_id.include?('$') || user_id.include?(' ')
+        return '❌ ID cannot contain !#$ or spaces'
+    end
+    # User password must contain at least one number.
+    if user_id.count('0-9') <= 0
+        return '❌ Must include one number!'
+    end
+
+    return '✅ Valid password and ID!'
 end
 
-p password_checker('Bravo2023', 'Bravo2023')
-p password_checker('Bravo', 'Bravo2')
-p password_checker('Bravo123', 'Bravo22223')
-p password_checker('Bravo123', 'Bravo22223$')
-p password_checker('Bravo123!', 'Bravo22223$')
-p password_checker('Bravo123!', 'password')
-p password_checker('Bravo123!', 'password')
-p password_checker('Bravoooo4', 'password$')
+def test (id, password)
+  # ljust adds padding to right side of string
+  # example
+  # "hello".ljust(10) # => "hello     "
+  puts "ID: #{id.ljust(15)} Password: #{password.ljust(15)} #{password_checker(id, password)}"
+end
 
-
-# User ID and password must be at least six characters long.
-
-# Password must contain at least one of: !#$
-
-# User ID cannot contain the following characters: !#$ or spaces
-
-# Password cannot be the word "password".
-
-# User password must contain at least one number.
+test('Bravo2023', 'Bravo2023')
+test('Bravo', 'Bravo2')
+test('Bravo123', 'Bravo22223')
+test('Bravo123!', 'Bravo22223$')
+test('Bravo123!', 'password')
+test('Bravoooo', 'password$')
+test('Bravoooo4', 'password$')
