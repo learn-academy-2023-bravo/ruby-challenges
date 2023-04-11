@@ -6,13 +6,16 @@ describe Task do
         task = Task.new
         expect(task).to be_a(Task)
         expect(task.status).to eq('in progress')
+        expect(task.due_date).to be_nil
     end
 
-    it 'creates a new task with given title and description' do
-        task = Task.new('Study', 'Learn a new testing suite')
+    it 'creates a new task with given title, description, and due date' do
+        due_date = Date.new(2023, 4, 30)
+        task = Task.new('Study', 'Learn a new testing suite', due_date)
         expect(task.title).to eq('Study')
         expect(task.description).to eq('Learn a new testing suite')
         expect(task.status).to eq('in progress')
+        expect(task.due_date).to eq(due_date)
     end
 
     it 'marks a task as done' do
@@ -28,4 +31,9 @@ describe Task do
         task.mark_done
         expect(task.to_s).to eq('Title: Study | Description: Learn a new testing suite | Status: done')
     end
+end
+
+describe 'TaskList' do
+    it 'can add tasks to the task list'
+    @task_list = TaskList.new
 end
