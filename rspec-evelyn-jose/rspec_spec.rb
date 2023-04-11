@@ -1,5 +1,6 @@
 require 'rspec'
 require_relative 'rspec'
+require 'date'
 
 describe 'Task' do
   it 'the task is real' do
@@ -20,15 +21,18 @@ describe 'Task' do
     expect(task.description).to eq 'We are describing the describing'
   end
 
-  it 'progress' do
+  it 'can be marked done or be in progress by default' do
     task = Task.new
-    task.progress = 'It is in progress'
-    expect(task.progress).to be_a String
-    expect(task.progress).to eq 'It is in progress'
+    expect(task.progress).to eq ('in progress')
+    expect(task.progress).to be_a(String)
+    new_task = Task.new('Done')
+    expect(new_task.progress).to eq ('Done')
   end
 
-  it 'marked progress done' do
+  it 'has a status' do
     task = Task.new
-    expect{@task.marked_done true}.to change {@task.progress}.from ('in progress').to ('marked done')
+    expect{task.status('Complete')}.to change{task.progress}.from('in progress').to('Complete')
+ 
   end
+
 end

@@ -23,28 +23,45 @@
 # end
 
 # As a developer, I can mark a Task done. Tasks should be initialized as 'in progress'.
-class Task
-  attr_accessor :title, :description, :progress
-  def initialize
-    @title = title
-    @description = description
-    @progress = false
-  end
-
-  def marked_done
-    if @progress = true
-    'marked as done'
-    else
-      'in progress'
-    end
-  end
-end
+# class Task
+#   attr_accessor :title, :description, :progress
+#   def initialize(progress='in progress')
+#     @title = title
+#     @description = description
+#     @progress = progress
+#   end
+# end
 
 # As a developer, when I print a Task that is done, its status is shown.
+# class Task
+#   attr_accessor :title, :description, :progress
+#   def initialize(progress='in progress')
+#     @title = title
+#     @description = description
+#     @progress = progress
+#   end
 
+#   def status sts 
+#     @sts = 'Complete'
+#     @progress = sts
+#     end
+# end
 
 # As a developer, I can give a Task a due date. Hint: Use the built-in Ruby Date class.
 
+class Task
+  attr_accessor :title, :description, :progress
+  def initialize(progress='in progress')
+    @title = title
+    @description = description
+    @progress = progress
+  end
+
+  def status sts 
+    @sts = 'Complete'
+    @progress = sts
+    end
+end
 
 # 🏔 Stretch Goals
 # As a developer, I can add all of my Tasks to a TaskList.
